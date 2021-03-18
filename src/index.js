@@ -2,18 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 import AppRouter from "./routers/AppRouter";
-import { createStore } from "redux";
 import "./App.css";
+import configureStore from "./store/configureStore";
+import { Provider } from "react-redux";
 
-const initialState = {
-    count: 0
-}
+const store = configureStore();
 
-const store = createStore((state = initialState) => {
-    return state;
-});
 
-ReactDOM.render(<AppRouter />, document.getElementById('root')
-);
+ReactDOM.render(<Provider store={store}><AppRouter /></Provider>, document.getElementById('root'));
 
 reportWebVitals();
